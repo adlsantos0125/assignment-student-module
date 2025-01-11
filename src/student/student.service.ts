@@ -1,4 +1,3 @@
-
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -14,5 +13,9 @@ export class StudentService {
   async create(studentData: Partial<Student>): Promise<Student> {
     const student = this.studentRepository.create(studentData);
     return this.studentRepository.save(student);
+  }
+
+  async findAll(): Promise<Student[]> {
+    return this.studentRepository.find();
   }
 }
